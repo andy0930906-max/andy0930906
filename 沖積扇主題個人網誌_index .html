@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖積扇電子書</title>
+<style>
+body{margin:0;font-family:"Noto Sans TC",sans-serif;background:#eaeaea;display:flex;justify-content:center;align-items:center;height:100vh;}
+.book{width:800px;height:500px;position:relative;perspective:2000px;}
+.page{width:100%;height:100%;position:absolute;background:white;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);padding:30px;box-sizing:border-box;backface-visibility:hidden;transform-origin:left;transition:transform 0.8s;overflow:auto;}
+.page img{max-width:100%;border-radius:10px;margin-top:10px;}
+.page h2{border-left:5px solid #4CAF50;padding-left:10px;}
+.controls{position:absolute;bottom:-60px;width:100%;text-align:center;}
+button{padding:10px 20px;margin:5px;border:none;border-radius:8px;background:#4CAF50;color:white;font-size:16px;cursor:pointer;}
+button:hover{background:#388e3c;}
+</style>
+</head>
+<body>
+
+<div class="book" id="book">
+
+<div class="page" style="z-index:5;" id="p0">
+<h1>一出山口就「散開」：沖積扇的地理現場直擊</h1>
+<p style="font-size:18px;color:#555;">副標：從山洪搬運到平原堆積，一本看懂沖積扇的形成與防災</p>
+<p>點擊下方按鈕開始閱讀</p>
+<img src="圖一.png">
+</div>
+
+<div class="page" style="z-index:4;" id="p1">
+<h2>一、沖積扇的形成與演育</h2>
+<p>沖積扇（alluvial fan）是山地與平原交界處最典型的堆積地形之一，其形成與演育涉及水文、地形動力與氣候條件的長期交互作用。</p>
+<p>沖積扇的形成始於山區河流攜帶大量碎屑物質（礫石、砂、粉砂）流出山口時的動能變化。在狹窄陡峻的山谷中，水流速度快、搬運能力強；當河流流出谷口進入坡度驟降的開闊平原時，流速迅速降低，搬運能力下降，沉積物逐漸堆積，形成扇狀展開的堆積體。</p>
+</div>
+
+<div class="page" style="z-index:3;" id="p2">
+<h2>演育階段</h2>
+<p><b>初期堆積：</b>以粗礫為主，集中於扇頂，河道不穩定呈辮狀。</p>
+<p><b>擴展發育：</b>沖積扇向外擴展，粒徑由粗到細分選，河道頻繁改道（avulsion）。</p>
+<p><b>成熟穩定：</b>坡度趨緩，河道較固定，人類活動開始介入。</p>
+<p>此外，氣候（降雨）、構造運動與岩性也會影響其發育；台灣因地形陡峭與颱風頻繁，使沖積扇動態性強。</p>
+<img src="圖二.jpg">
+</div>
+
+<div class="page" style="z-index:2;" id="p3">
+<h2>二、地形特徵</h2>
+<p><b>扇頂：</b>坡度最大、礫石多、滲透性高。</p>
+<p><b>扇中：</b>坡度減緩、砂質沉積、河道易改道。</p>
+<p><b>扇端：</b>坡度最小、細粒沉積，常見地下水湧出。</p>
+<ul>
+<li>扇形展開</li>
+<li>坡度遞減</li>
+<li>顆粒分帶明顯</li>
+<li>河道不穩定</li>
+</ul>
+</div>
+
+<div class="page" style="z-index:1;" id="p4">
+<h2>三、防災與人文利用</h2>
+<p>沖積扇潛藏土石流、洪水改道與淹水風險，特別在強降雨期間。</p>
+<ul>
+<li>劃設潛勢區與限制開發</li>
+<li>設置攔砂壩與導流設施</li>
+<li>建立即時預警系統</li>
+</ul>
+<p>在人文利用方面，沖積扇適合農業與聚落發展，亦利於地下水補注與交通建設，但過度開發可能導致災害加劇。</p>
+<p>整體而言，沖積扇是資源與風險並存的地形，需在人類利用與自然平衡間取得調和。</p>
+</div>
+
+<div class="controls">
+<button onclick="prevPage()">上一頁</button>
+<button onclick="nextPage()">下一頁</button>
+</div>
+
+</div>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+
+function update(){
+  pages.forEach((p,i)=>{
+    if(i < current){
+      p.style.transform = 'rotateY(-180deg)';
+    }else{
+      p.style.transform = 'rotateY(0deg)';
+    }
+  });
+}
+
+function nextPage(){
+  if(current < pages.length) current++;
+  update();
+}
+
+function prevPage(){
+  if(current > 0) current--;
+  update();
+}
+</script>
+
+</body>
+</html>
